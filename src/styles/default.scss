@@ -1,0 +1,78 @@
+.background-header {
+    background-color: aqua;
+    height: 70px;
+    border-bottom-left-radius: 9%;
+    border-bottom-right-radius: 60%;
+}
+
+.margin-none {
+    margin: 0px !important;
+}
+
+.small-margin-top {
+    margin-top: 20px !important;
+}
+
+.small-padding-top {
+    padding-top: 20px !important;
+}
+
+.small-margin-left {
+    margin-left: 20px !important;
+}
+
+.moderate-margin-left {
+    margin-left: 40px !important;
+}
+
+.subtitle-basic {
+    margin-left: 10px !important;
+    margin-top: 10px !important;
+}
+
+.background-principal {
+    background-image: linear-gradient(to bottom right, aqua, white);
+    // background-color: ;
+    height: 100%;
+    width: 100%;
+}
+
+.large-margin-top {
+    margin-top: 80px;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.floated-right {
+    float: right;
+}
+
+.floated-left {
+    float: left;
+}
+
+.circular {
+    border-radius: 100% !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.centralizar {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.aprox-botton {
+    bottom: 10%;
+}
+
+.max-size {
+    height: 400px;
+    max-height: 400px;
+    overflow: auto;
+}
