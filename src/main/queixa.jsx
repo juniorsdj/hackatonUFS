@@ -11,15 +11,12 @@ class Intermediario extends React.Component {
         return (
             <div>
                 <Form>
-                    <Header.Subheader className='floated-left'>Queixa</Header.Subheader>
-                    <Divider hidden />
-                    <Divider hidden />
-                    <Divider hidden />
+                    <Header.Subheader className='floated-left top-bottom-margin'>Baseado nas queixas apresentadas, selecione um modelo baseado nos fluxos de Manchester</Header.Subheader>
                     <TextArea autoHeight
                         onChange={(e,value) => changeQueixas(value.value)}
                         value={queixa}
                         placeholder='Queixas do paciente'
-                        style={{ minHeight: 400 }} />
+                        style={{ minHeight: 300 }} />
                 </Form>
             </div>
         )

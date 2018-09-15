@@ -40,18 +40,20 @@ class App extends React.Component {
     render() {
         const { isLoading, value, results, steps, idFluxo } = this.state
         return (
-            <div className='text-center'>
-                <Header as='h2' textAlign='center'>
-                    <Header.Content className='small-margin-top'>Nome app</Header.Content>
+            <div className=''>
+            <div className="nav-header">
+                <Header as='h2' className='nav-title'>
+                    <Header.Content className=''><img className="nav-logo" src="/images/erisk.svg" alt="logo"/></Header.Content>
                 </Header>
+                </div>
                 <Grid >
-                    <Grid.Column width={3}>
-                        {steps > 0 ? (<Button className='centralizar' circular icon='angle double left'
+                    <Grid.Column className="justify-content-center" width={3}>
+                        {steps > 0 ? (<Button className='centralizar btn-before' circular 
                             onClick={() => this.setState({ steps: steps - 1 })}
                         />) : null}
                     </Grid.Column>
                     <Grid.Column width={10}>
-                        <Container className='large-margin-top '>
+                        <Container>
                             {(steps > 0 && steps < 3) && (<Search className='floated-right'
                                 loading={isLoading}
                                 // onResultSelect={this.handleResultSelect}
@@ -69,37 +71,12 @@ class App extends React.Component {
                         </Container>
                     </Grid.Column>
                     <Grid.Column width={3} className='text-center'>
-                        {steps < 4 ? (<Button className='centralizar' circular icon='angle double right'
+                        {steps < 4 ? (<Button className='centralizar btn-next' circular 
                             onClick={() => this.setState({ steps: steps + 1 })}
                         />) : null}
                     </Grid.Column>
                 </Grid>
-                <Step.Group ordered className='aprox-botton'>
-                    <Step
-                        active={steps == 0}
-                        completed={steps > 0}
-                    >
-                        <Step.Content>
-                            <Step.Title>Queixa</Step.Title>
-                        </Step.Content>
-                    </Step>
-
-                    <Step active={steps == 1}
-                        completed={steps > 1} >
-                        <Step.Content>
-                            <Step.Title>Defina o Fluxograma</Step.Title>
-                        </Step.Content>
-                    </Step>
-
-                    <Step
-                        active={steps == 2}
-                        completed={steps > 2}
-                    >
-                        <Step.Content>
-                            <Step.Title>Defina o descriminador</Step.Title>
-                        </Step.Content>
-                    </Step>
-                </Step.Group>
+                <img className="steps" src="/images/progress-1.svg" alt=""/>                
             </div>
         )
     }

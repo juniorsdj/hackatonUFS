@@ -95,17 +95,12 @@ class Basico extends React.Component {
     }
 
     render() {
-        const { sintomas } = this.state
-      
+        const { sintomas } = this.state      
         return (
             <div>
                 <Header as='h2' className='subtitle-basic'>
-                    <Header.Subheader className='floated-left'>Marque abaixo o fluxo desejado pelo paciente</Header.Subheader>
-
-                </Header>
-                <Divider hidden />
-                <Divider hidden />
-                <Divider hidden />
+                    <Header.Subheader className=''>Marque abaixo o fluxo desejado pelo paciente</Header.Subheader>
+                </Header>                
                 <Container className='max-size'>
                     <Form onSubmit={() => this.next()}>
                         {/* <Input icon='users' fluid iconPosition='left' placeholder='Insira seu nome' /> */}
