@@ -41,14 +41,14 @@ class App extends React.Component {
         const { isLoading, value, results, steps, idFluxo } = this.state
         return (
             <div className=''>
-            <div className="nav-header">
-                <Header as='h2' className='nav-title'>
-                    <Header.Content className=''><img className="nav-logo" src="/images/erisk.svg" alt="logo"/></Header.Content>
-                </Header>
+                <div className="nav-header">
+                    <Header as='h2' className='nav-title'>
+                        <Header.Content className=''><img className="nav-logo" src="/images/erisk.svg" alt="logo" /></Header.Content>
+                    </Header>
                 </div>
                 <Grid >
                     <Grid.Column className="justify-content-center" width={3}>
-                        {steps > 0 ? (<Button className='centralizar btn-before' circular 
+                        {steps > 0 ? (<Button className='centralizar btn-before' circular
                             onClick={() => this.setState({ steps: steps - 1 })}
                         />) : null}
                     </Grid.Column>
@@ -71,12 +71,19 @@ class App extends React.Component {
                         </Container>
                     </Grid.Column>
                     <Grid.Column width={3} className='text-center'>
-                        {steps < 4 ? (<Button className='centralizar btn-next' circular 
+                        {steps < 4 ? (<Button className='centralizar btn-next' circular
                             onClick={() => this.setState({ steps: steps + 1 })}
                         />) : null}
                     </Grid.Column>
                 </Grid>
-                <img className="steps" src="/images/progress-1.svg" alt=""/>                
+                {steps == 0 ? (
+                    <img className="steps" src="/images/progress-1.svg" alt="" />) :
+                    steps == 1 ? (
+                        <img className="steps" src="/images/progress-2.svg" alt="" />
+                    ) : steps == 2 ?(
+                        <img className="steps" src="/images/progress-3.svg" alt="" />
+                    ): null
+                }
             </div>
         )
     }

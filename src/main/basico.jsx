@@ -10,52 +10,7 @@ class Basico extends React.Component {
     constructor() {
         super()
         this.state = {
-
-
-
-            // lembrar de apagar os fluxos 
-
-
-
-
-
-            fluxos: [
-                {
-                    "id": 1,
-                    "text": "Cefaleia"
-                },
-                {
-                    "id": 2,
-                    "text": "Cefaleia"
-                },
-                {
-                    "id": 3,
-                    "text": "Diarreia e\/ou vomito"
-                },  {
-                    "id": 1,
-                    "text": "Cefaleia"
-                },
-                {
-                    "id": 2,
-                    "text": "Cefaleia"
-                },
-                {
-                    "id": 3,
-                    "text": "Diarreia e\/ou vomito"
-                },
-                {
-                    "id": 4,
-                    "text": "Dispneia em adulto"
-                },
-                {
-                    "id": 5,
-                    "text": "Dor Abdominal em Adulto"
-                },
-                {
-                    "id": 6,
-                    "text": "Mal-estar em Adulto"
-                }
-            ],
+            fluxos: [],
             idSelected: 0
         }
     }
@@ -74,8 +29,8 @@ class Basico extends React.Component {
 
     renderCheckboxList() {
         const { fluxos, idSelected } = this.state
-        
-        if(idSelected != this.props.isSelected){
+
+        if (idSelected != this.props.isSelected) {
             this.state.idSelected = this.props.isSelected
         }
 
@@ -95,12 +50,12 @@ class Basico extends React.Component {
     }
 
     render() {
-        const { sintomas } = this.state      
+        const { sintomas } = this.state
         return (
             <div>
                 <Header as='h2' className='subtitle-basic'>
                     <Header.Subheader className=''>Marque abaixo o fluxo desejado pelo paciente</Header.Subheader>
-                </Header>                
+                </Header>
                 <Container className='max-size'>
                     <Form onSubmit={() => this.next()}>
                         {/* <Input icon='users' fluid iconPosition='left' placeholder='Insira seu nome' /> */}

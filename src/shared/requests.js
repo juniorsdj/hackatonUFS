@@ -1,6 +1,6 @@
 import Axios from 'axios'
 
-const URL_API = "http://76750e81.ngrok.io/api"
+const URL_API = "http://e-risk.herokuapp.com/api"
 
 const Requests = {
     fluxograma: {
@@ -11,7 +11,7 @@ const Requests = {
     },
     discriminadores: {
         getDiscriminadores: (idFluxo) =>{
-            const request = Axios.post(`${URL_API}/discriminadores/${idFluxo}`)
+            const request = Axios.get(`${URL_API}/fluxos/${idFluxo}/discriminadores`)
             return request
         }
     }
