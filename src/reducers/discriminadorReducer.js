@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-    discriminador: {}
+    discriminador: 0
 }
 
 export default (state = INITIAL_STATE, action) => {

@@ -10,8 +10,12 @@ const Requests = {
         }
     },
     discriminadores: {
-        getDiscriminadores: (idFluxo) =>{
+        getDiscriminadores: (idFluxo) => {
             const request = Axios.get(`${URL_API}/fluxos/${idFluxo}/discriminadores`)
+            return request
+        },
+        getParametro: (id) => {
+            const request = Axios.get(`${URL_API}/discriminadores/${id}/paramentros`)
             return request
         }
     }
