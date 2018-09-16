@@ -7,7 +7,7 @@ import Fluxograma from './basico'
 import Discriminador from './intermediario'
 import Queixa from './queixa'
 import Routes from './routes'
-import { Loader, Grid, Icon, Input, Step, Search, Button, Header, Card, Container, Segment, Image } from 'semantic-ui-react'
+import { Loader, Grid, Icon, Input, Step, TransitionablePortal, Search, Button, Header, Card, Container, Segment, Image } from 'semantic-ui-react'
 const source = {}
 class App extends React.Component {
     constructor() {
@@ -16,43 +16,48 @@ class App extends React.Component {
             isLoading: false,
             valueSearch: '',
             results: '',
-            steps: 0
+            steps: 0,
+            open: true,
+            transitions: ['fly left', 'fly right'],
+            posicaoTransition: 0
         }
     }
 
-    // handleResultSelect (e, { result }) => this.setState({ value: result.title })
 
-    handleSearchChange(e, { value }) {
-        this.setState({ isLoading: true, value })
+
+    componentWillMount() {
+    }
+    recuarTela(){
+        this.setState({ open: false, posicaoTransition: 1 })
 
         setTimeout(() => {
-            if (this.state.value.length < 1) return this.resetComponent()
-
-            const re = new RegExp(_.escapeRegExp(this.state.value), 'i')
-            const isMatch = result => re.test(result.title)
-
-            this.setState({
-                isLoading: false,
-                results: _.filter(source, isMatch),
-            })
-        }, 300)
+            this.setState({ open: true, posicaoTransition: 0, steps: this.state.steps - 1 })
+        }, 900)
     }
+    avancarTela() {
+        this.setState({ open: false, posicaoTransition: 0 })
+
+        setTimeout(() => {
+            this.setState({ open: true, posicaoTransition: 1, steps: this.state.steps + 1 })
+        }, 900)
+}
     render() {
-        const { isLoading, value, results, steps, idFluxo } = this.state
+        const { open, isLoading, value, results, steps, idFluxo, transitions, posicaoTransition } = this.state
         return (
-            <div className=''>
-            <div className="nav-header">
-                <Header as='h2' className='nav-title'>
-                    <Header.Content className=''><img className="nav-logo" src="/images/erisk.svg" alt="logo"/></Header.Content>
-                </Header>
+            <div>
+                <div className="nav-header">
+                    <Header as='h2' className='nav-title'>
+                        <Header.Content className=''><img className="nav-logo" src="/images/erisk.svg" alt="logo"/></Header.Content>
+                    </Header>
                 </div>
+                <TransitionablePortal open={open} transition={{ animation: transitions[posicaoTransition], duration: 850 }}>
                 <Grid >
                     <Grid.Column className="justify-content-center" width={3}>
                         {steps > 0 ? (<Button className='centralizar btn-before' circular 
                             onClick={() => this.setState({ steps: steps - 1 })}
                         />) : null}
                     </Grid.Column>
-                    <Grid.Column width={10}>
+                    <Grid.Column width={10}>                    
                         <Container>
                             {(steps > 0 && steps < 3) && (<Search className='floated-right'
                                 loading={isLoading}
@@ -68,15 +73,16 @@ class App extends React.Component {
                                         : steps == 3 ? (<div><h1>resultado</h1></div>)
                                             : null}
 
-                        </Container>
+                        </Container>                                     
                     </Grid.Column>
                     <Grid.Column width={3} className='text-center'>
-                        {steps < 4 ? (<Button className='centralizar btn-next' circular 
+                        {steps < 3 ? (<Button className='centralizar btn-next' circular 
                             onClick={() => this.setState({ steps: steps + 1 })}
                         />) : null}
                     </Grid.Column>
-                </Grid>
-                <img className="steps" src="/images/progress-1.svg" alt=""/>                
+                    <img className="steps" src="/images/progress-1.svg" alt=""/>   
+                </Grid>                
+                </TransitionablePortal>                
             </div>
         )
     }
