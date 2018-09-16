@@ -11,13 +11,11 @@ class Avancado extends React.Component {
         console.log(classificacao)
         return (
             <div>
-                <Header as='h2' className='subtitle-basic'>
+                <Header as='h2' className='nav-title'>
                     <Header.Subheader className=''>É recomendada a classificação:</Header.Subheader>
                 </Header>
                 <Container className='max-size'>
-
-                        <span className='result'>{classificacao}</span>
-                   
+                        <span className='resultado'>{classificacao}</span>
                 </Container>
             </div>
         )

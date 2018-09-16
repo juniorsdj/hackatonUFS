@@ -53,7 +53,7 @@ class Basico extends React.Component {
         const { sintomas } = this.state
         return (
             <div>
-                <Header as='h2' className='subtitle-basic'>
+                <Header as='h2' className='nav-title'>
                     <Header.Subheader className=''>Marque abaixo o fluxo desejado pelo paciente</Header.Subheader>
                 </Header>
                 <Container className='max-size'>

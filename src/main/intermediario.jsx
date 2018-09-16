@@ -32,7 +32,7 @@ class Intermediario extends React.Component {
         const { discriminadores } = this.state
 
         return discriminadores.map((grupo, index) => (
-            <Segment key={index}>
+            <Segment key={index} className="bg-clean">
                 {
                     grupo.map((discriminador, ind) => (
 
@@ -57,13 +57,10 @@ class Intermediario extends React.Component {
         const { sintomas } = this.state
         return (
             <div>
-                <Header as='h2' className='subtitle-basic'>
-                    <Header.Subheader className='floated-left'>Marque abaixo o fluxo desejado pelo paciente</Header.Subheader>
+                <Header as='h2' className='nav-title'>
+                    <Header.Subheader className='floated-left'>Marque o discriminador do paciente</Header.Subheader>
 
-                </Header>
-                <Divider hidden />
-                <Divider hidden />
-                <Divider hidden />
+                </Header>                
                 <Container className='max-size'>
                     <Form onSubmit={() => this.next()}>
                         {/* <Input icon='users' fluid iconPosition='left' placeholder='Insira seu nome' /> */}

@@ -14,7 +14,7 @@ import Resultado from './avancado'
 class App extends React.Component {
     constructor() {
         super()
-        this.state = {
+        this.state = {            
             isLoading: false,
             valueSearch: '',
             results: '',
@@ -22,11 +22,10 @@ class App extends React.Component {
             open: true,
             // transitions: ['fly left', 'fly right'],
             posicaoTransition: 0,
-            classificacao: ''
+            classificacao: 'azul'
         }
     }
-
-
+ 
     classificarComoBranco() {
         this.setState({ steps: 3, classificacao: classificacao.Branca })
     }
@@ -41,6 +40,7 @@ class App extends React.Component {
     }
     render() {
         const { open, isLoading, value, results, steps, classificacao, idFluxo, transitions, posicaoTransition } = this.state
+        console.log(classificacao)
         const { isFluxo, isDiscriminador, discriminador } = this.props
         let disabledAvancar = false
         if (!isFluxo && steps == 1 || !isDiscriminador && steps == 2)
@@ -54,11 +54,17 @@ class App extends React.Component {
             }
         }
         return (
-            <div>
+            <div className={`bg-${classificacao || 'azul'}`}>
                 <div className="nav-header">
                     <Header as='h2' className='nav-title'>
                         <Header.Content className=''><img className="nav-logo" src="/images/erisk.svg" alt="logo" /></Header.Content>
                     </Header>
+                    {steps == 0 && (
+                            <Button
+                                className="btn-branco"
+                                content="Classificar Branco"
+                                onClick={() => this.classificarComoBranco()}
+                            />)}
                 </div>
                 <Grid >
                     <Grid.Column className="justify-content-center" width={3}>
@@ -85,11 +91,7 @@ class App extends React.Component {
                         </Container>
                     </Grid.Column>
                     <Grid.Column width={3} className='text-center'>
-                        {steps == 0 && (
-                            <Button
-                                content="Classificar Branco"
-                                onClick={() => this.classificarComoBranco()}
-                            />)}
+                        
                         {steps < 3 ? (<Button className='centralizar btn-next' circular
                             disabled={disabledAvancar}
                             onClick={() => this.avancarTela()}
